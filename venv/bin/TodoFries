@@ -1,0 +1,12 @@
+#!/mnt/c/Users/scott/OneDrive/cli-projects/todo-fries/venv/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'TodoFries','console_scripts','TodoFries'
+__requires__ = 'TodoFries'
+import re
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(
+        load_entry_point('TodoFries', 'console_scripts', 'TodoFries')()
+    )

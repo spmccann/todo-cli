@@ -1,0 +1,8 @@
+TodoFries.py
+setup.py
+TodoFries.egg-info/PKG-INFO
+TodoFries.egg-info/SOURCES.txt
+TodoFries.egg-info/dependency_links.txt
+TodoFries.egg-info/entry_points.txt
+TodoFries.egg-info/requires.txt
+TodoFries.egg-info/top_level.txt
