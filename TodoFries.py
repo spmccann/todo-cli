@@ -20,7 +20,7 @@ click.echo("|_   _|__   __| | ___   |  ___| __(_) ___  ___ ")
 click.echo("  | |/ _ \ / _` |/ _ \  | |_ | '__| |/ _ \/ __|")
 click.echo("  | | (_) | (_| | (_) | |  _|| |  | |  __/\__  ")
 click.echo("  |_|\___/ \__,_|\___/  |_|  |_|  |_|\___||___/")
-click.echo("Version 0.01\n")
+click.echo("                                 Version 0.01\n")
 
 
 @click.group()
@@ -46,7 +46,7 @@ def show_tasks():
     click.echo("All OF YOUR OPEN TASKS:")
     cursor = conn.execute("SELECT id, task, description, priority from TODO")
     for row in cursor:
-        click.echo(f"ID: {row[0]}\nTask: {row[1]}\nDescription: {row[2]}\nPriority: {row[3]}\n\n")
+        click.echo(f"ID: {row[0]}\nTask: {row[1]}\nDescription: {row[2]}\nPriority: {row[3]}\n")
     conn.close()
 
 
