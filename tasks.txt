@@ -1,4 +1,3 @@
-ID: 0
 Date: Tue Mar 22 16:23:39 2022
 Task: The remove task feature
 Description: Users need a way to remove their tasks
