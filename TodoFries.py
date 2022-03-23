@@ -41,8 +41,7 @@ def new_task(task, desc, priority):
 
 
 @cli.command()
-@click.argument('file', type=click.File('r'), default="tasks.txt")
-def show_tasks(file):
+def show_tasks():
     """Shows your tasks"""
     click.echo("All OF YOUR OPEN TASKS:")
     cursor = conn.execute("SELECT id, task, description, priority from TODO")
