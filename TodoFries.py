@@ -6,7 +6,7 @@ conn = sqlite3.connect('tasks.db')
 
 # conn.execute('''
 #     CREATE TABLE TODO
-#     (ID INTEGER PRIMARY KEY,
+#     (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 #     DATE           TEXT,
 #     TASK           TEXT,
 #     DESCRIPTION    TEXT,
@@ -34,11 +34,13 @@ def cli():
 @click.option('--priority', prompt='Priority', help='Priority of task')
 def new_task(task, desc, priority):
     """Adds a new task"""
-    date = datetime.now().strftime("%c")
     click.echo("Task saved. Use show-tasks to view")
-    conn.execute(f"INSERT INTO TODO (DATE, TASK, DESCRIPTION, PRIORITY) VALUES ('{date}', '{task}', '{desc}', '{priority}')")
+    date = datetime.now().strftime("%c")
+    t = (None, date, task, desc, priority)
+    conn.execute("INSERT INTO TODO VALUES (?, ?, ?, ?, ?)", t)
     conn.commit()
     conn.close()
+
 
 
 @cli.command()
@@ -58,10 +60,13 @@ def show_tasks():
 @click.option('--edit_p', prompt='Priority(edit)', help='Priority to edit')
 def edit_task(task_id, edit_t, edit_d, edit_p):
     """Edits a task."""
-    conn.execute(f"UPDATE TODO set TASK = '{edit_t}', DESCRIPTION = '{edit_d}', PRIORITY = '{edit_p}' where ID = {task_id}")
+    t = (edit_t, edit_d, edit_p, task_id)
+    conn.execute("UPDATE TODO set TASK = ?, DESCRIPTION = ?, PRIORITY = ? WHERE ID = ?", t)
     conn.commit()
     conn.close()
     click.echo(f"Task {task_id} has been updated.")
+
+
 
 
 @cli.command()
@@ -69,7 +74,8 @@ def edit_task(task_id, edit_t, edit_d, edit_p):
 def resolve_task(task_id):
     """Resolves a task by id"""
     click.echo(f"Task {task_id} has been resolved.")
-    conn.execute(f"DELETE from TODO where ID = {task_id}")
+    t = task_id
+    conn.execute("DELETE from TODO where ID = ?", t)
     conn.commit()
     conn.close()
 
