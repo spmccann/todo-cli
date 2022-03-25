@@ -27,13 +27,6 @@ click.echo("                                 Version 0.01\n")
 def cli():
     pass
 
-# need to create a users db before I can do this
-# @cli.command()
-# @click.option('--name', prompt='Enter name', help='Set your name')
-# def set_name(name):
-#     """Set your username"""
-#     conn.execute(f"INSERT INTO TOO (NAME) VALUES ('{name}')")
-
 
 @cli.command()
 @click.option('--task', prompt='Create task', help='Task user is adding')
