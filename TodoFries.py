@@ -1,20 +1,11 @@
 import click
 from datetime import datetime
 import sqlite3
+from os.path import join, dirname, abspath
 
-conn = sqlite3.connect(r"C:\Users\scott\OneDrive\PyCharmProjects\Todo\todo.db")
+db_path = join(dirname(dirname(dirname(abspath(__file__)))), 'PyCharmProjects/Todo/todo.db')
+conn = sqlite3.connect(db_path)
 
-
-# conn.execute('''
-#     CREATE TABLE TODO
-#     (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-#     DATE           TEXT,
-#     TASK           TEXT,
-#     DESCRIPTION    TEXT,
-#     PRIORITY       TEXT);
-# ''')
-#
-# conn.close()
 
 click.echo(" _____         _         _____     _           ")
 click.echo("|_   _|__   __| | ___   |  ___| __(_) ___  ___ ")
@@ -65,8 +56,6 @@ def edit_task(id, edit_t, edit_d, edit_p):
     conn.commit()
     conn.close()
     click.echo(f"Task {id} has been updated.")
-
-
 
 
 @cli.command()
