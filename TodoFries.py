@@ -1,11 +1,8 @@
 import click
 from datetime import datetime
 import sqlite3
-from os.path import join, dirname, abspath
 
-db_path = join(dirname(dirname(dirname(abspath(__file__)))), 'PyCharmProjects/Todo/todo.db')
-conn = sqlite3.connect(db_path)
-
+conn = sqlite3.connect('../../PyCharmProjects/Todo/todo.db')
 
 click.echo(" _____         _         _____     _           ")
 click.echo("|_   _|__   __| | ___   |  ___| __(_) ___  ___ ")
