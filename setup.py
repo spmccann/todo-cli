@@ -9,7 +9,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-        'TodoFries = TodoFries:cli',
+            'TodoFries = TodoFries:cli',
         ],
     },
 )
